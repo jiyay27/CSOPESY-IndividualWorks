@@ -10,5 +10,7 @@
 
 output/
 
+.vs/
+
 # Built Visual Studio Code Extensions
 *.vsix
