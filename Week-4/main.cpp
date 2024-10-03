@@ -1,8 +1,12 @@
 #include <iostream>
 #include <ctime>
 #include <string>
+#include <fstream>
+#include <Windows.h>
 
-#include "CustomLayout.h"
+//#include "CustomLayout.h"
+#include "Process.h"
+#include "GraphicsUtil.h"
 
 typedef std::string String;
 using std::cout;
@@ -46,6 +50,8 @@ void header(){
     cout << "Hello, Welcome to CSOPESY commandline!\n";
     yellow();
     cout << "Type 'exit' to quit, 'clear' to clear the screen\n";
+    white();
+    cout << "Enter a command: ";
 }
 void clear(){
     system("cls");
@@ -62,15 +68,37 @@ String getTimestamp() {
     return std::string(buffer);
 }
 
+void runSMI() {
+    AllocConsole();
 
-main() {
+    FILE* fp;
+    freopen_s(&fp, "CONOUT$", "w", stdout);
+    freopen_s(&fp, "CONIN$", "r", stdin);
+    freopen_s(&fp, "CONOUT$", "w", stderr);
+
+    GraphicsUtil GraphicsUtil("NVIDIA GeForce GTX 9090", "999.99", 65, 6144, 8192);
+
+    GraphicsUtil.addProcess(Process(01, "C", "chrome.exe", 256));
+    GraphicsUtil.addProcess(Process(02, "C", "notepad.exe", 128));
+    GraphicsUtil.addProcess(Process(03, "G", "python.exe", 512));
+    GraphicsUtil.addProcess(Process(04, "C", "vscode.exe", 1024));
+    GraphicsUtil.addProcess(Process(05, "G", "tensorflow.exe", 2048));
+
+    GraphicsUtil.displaySummary();
+    GraphicsUtil.displayProcesses();
+
+    std::cout << "\nPress any key to exit..." << std::endl;
+}
+
+int main() {
     asciiart();
     header();
+    String response = "";
 
     bool running = true;
     while(running)
     {
-        String response = "";
+        cin >> response;
 
         if(response == "exit")
         {
@@ -78,9 +106,9 @@ main() {
         } else if(response == "clear")
         {
             clear();
-        } else if(response == "nvidia-smi")
+        } else if(response == "smi")
         {
-
+            getTimestamp();
         }
     }
     

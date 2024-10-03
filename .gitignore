@@ -12,5 +12,7 @@ output/
 
 .vs/
 
+.exe/
+
 # Built Visual Studio Code Extensions
 *.vsix
