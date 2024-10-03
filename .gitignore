@@ -14,5 +14,7 @@ output/
 
 .exe
 
+run.exe
+
 # Built Visual Studio Code Extensions
 *.vsix
