@@ -121,16 +121,16 @@ int main() {
             system("cls");  
 
             showTimestamp();
-            
-            GraphicsUtil GraphicsUtil("NVIDIA-SMI 528.49", "999.99", 65, 6144, 8192);
+
+            GraphicsUtil GraphicsUtil("NVIDIA RTX 4090 Laptop GPU", "999.99", 65, 6144, 8192);
             
             GraphicsUtil.displaySummary();
             
-            GraphicsUtil.addProcess(Process(01, "C", "chrome.exe", 256));
-            GraphicsUtil.addProcess(Process(02, "C", "notepad.exe", 128));
-            GraphicsUtil.addProcess(Process(03, "G", "python.exe", 512));
-            GraphicsUtil.addProcess(Process(04, "C", "vscode.exe", 1024));
-            GraphicsUtil.addProcess(Process(05, "G", "tensorflow.exe", 2048));
+            GraphicsUtil.addProcess(Process(01, "G", "reallylongprocess/name/test/123/456/valorant.exe", 256));
+            GraphicsUtil.addProcess(Process(02, "G", "another/really/long/process/name/vscode.exe", 128));
+            GraphicsUtil.addProcess(Process(03, "C", "NASM.exe", 512));
+            GraphicsUtil.addProcess(Process(04, "C", "aiosehntoiase/asoiehcnas/aoisehcnaoencaur/rubyonrails.exe", 1024));
+            GraphicsUtil.addProcess(Process(05, "C", "afterburner.exe", 2048));
 
             GraphicsUtil.displayProcesses();
         }
