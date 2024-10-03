@@ -22,5 +22,4 @@ public:
     void addProcess(const Process& process);
     void displaySummary() const;
     void displayProcesses() const;
-    void runSMI();
 };

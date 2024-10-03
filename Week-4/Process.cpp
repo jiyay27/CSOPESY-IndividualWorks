@@ -8,6 +8,6 @@ Process::Process(int pid, const String& type, const String& process_name, int gp
 void Process::display() const {
     std::cout << "| " << std::setw(5) << pid << " | "
                   << std::setw(5) << type << " | "
-                  << std::setw(20) << process_name << " | "
-                  << std::setw(15) << gpu_memory_usage << " MB |" << std::endl;
+                  << std::setw(40) << process_name << " | "
+                  << std::setw(13) << gpu_memory_usage << " MB |" << std::endl;
 }

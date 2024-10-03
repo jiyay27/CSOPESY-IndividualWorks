@@ -11,6 +11,7 @@
 typedef std::string String;
 using std::cout;
 using std::cin;
+using std::endl;
 
 void black(){
     cout << "\033[0;30m";
@@ -51,21 +52,29 @@ void header(){
     yellow();
     cout << "Type 'exit' to quit, 'clear' to clear the screen\n";
     white();
-    cout << "Enter a command: ";
 }
 void clear(){
     system("cls");
     header();
 }
 
-String getTimestamp() {
-    std::time_t now = std::time(nullptr);
-    std::tm *localTime = std::localtime(&now);
+void showTimestamp() {
+    SYSTEMTIME st;
+    GetLocalTime(&st);
 
-    char buffer[80];
-    std::strftime(buffer, sizeof(buffer), "%a %b %e %H:%M:%S %Y", localTime);
+    const char* days[] = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
+    
+    const char* months[] = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+                            "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 
-    return std::string(buffer);
+    printf("%s %s %2d %02d:%02d:%02d %4d\n", 
+        days[st.wDayOfWeek],     
+        months[st.wMonth - 1],   
+        st.wDay,                 
+        st.wHour,                
+        st.wMinute,             
+        st.wSecond,              
+        st.wYear);               
 }
 
 void runSMI() {
@@ -76,7 +85,7 @@ void runSMI() {
     freopen_s(&fp, "CONIN$", "r", stdin);
     freopen_s(&fp, "CONOUT$", "w", stderr);
 
-    GraphicsUtil GraphicsUtil("NVIDIA GeForce GTX 9090", "999.99", 65, 6144, 8192);
+    GraphicsUtil GraphicsUtil("NVIDIA-SMI 528.49", "999.99", 65, 6144, 8192);
 
     GraphicsUtil.addProcess(Process(01, "C", "chrome.exe", 256));
     GraphicsUtil.addProcess(Process(02, "C", "notepad.exe", 128));
@@ -98,6 +107,7 @@ int main() {
     bool running = true;
     while(running)
     {
+        cout << "Enter a command: ";
         cin >> response;
 
         if(response == "exit")
@@ -106,9 +116,23 @@ int main() {
         } else if(response == "clear")
         {
             clear();
-        } else if(response == "smi")
+        } else if(response == "nvidia-smi")
         {
-            getTimestamp();
+            system("cls");  
+
+            showTimestamp();
+            
+            GraphicsUtil GraphicsUtil("NVIDIA-SMI 528.49", "999.99", 65, 6144, 8192);
+            
+            GraphicsUtil.displaySummary();
+            
+            GraphicsUtil.addProcess(Process(01, "C", "chrome.exe", 256));
+            GraphicsUtil.addProcess(Process(02, "C", "notepad.exe", 128));
+            GraphicsUtil.addProcess(Process(03, "G", "python.exe", 512));
+            GraphicsUtil.addProcess(Process(04, "C", "vscode.exe", 1024));
+            GraphicsUtil.addProcess(Process(05, "G", "tensorflow.exe", 2048));
+
+            GraphicsUtil.displayProcesses();
         }
     }
     

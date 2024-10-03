@@ -20,25 +20,35 @@ void GraphicsUtil::addProcess(const Process& process)
 
 void GraphicsUtil::displaySummary() const 
 {
-    setCursorPosition(0, 6);
-    std::cout << "+---------------------------------------------------------------+" << std::endl;
-    std::cout << "| GPU Name: " << std::setw(55) << name << " |" << std::endl;
-    std::cout << "| Driver Version: " << std::setw(47) << driver_version << " |" << std::endl;
-    std::cout << "| GPU Utilization: " << std::setw(45) << utilization << "% |" << std::endl;
-    std::cout << "| GPU Memory Usage: " << std::setw(27) << memory_usage << " MB / " << total_memory << " MB |" << std::endl;
-    std::cout << "+---------------------------------------------------------------+" << std::endl;
+    setCursorPosition(0, 1);
+    std::cout << "+-----------------------------------------------------------------------------+\n";
+    std::cout << "| " << name << std::setw(25) << "Driver Version: " << driver_version << std::setw(23) << "CUDA Version: 12.0" << std::setw(6) << "|" <<std::endl;
+    std::cout << "|-----------------------------------------------------------------------------|\n";
+    std::cout << "| GPU Name             TCC/WDDM | Bus-Id" << std::setw(17) << "Disp.A | " << "Volatile Uncorr. ECC |\n";
+    std::cout << "| Fan Temp  Perf  Pwr:Usage/Cap |         Memory-Usage | " << "GPU-Util  Compute M. " << std::setw(2) << "|\n";
+    std::cout << "|" << std::setw(32) << "|" << std::setw(23) << "|" << std::setw(24) << "MIG M. |\n";
+    std::cout << "|=============================================================================+\n";
+    std::cout << "|   0  NVIDIA GeForce ... WDDM  | 00000000:01:00.0  On |                  N/A |\n";
+    std::cout << "| N/A   75C    P3     13W / 62W |   1667MiB /  4096MiB |     25%      Default |\n";
+    std::cout << "|                               |                      |                  N/A |\n";
+    std::cout << "+-----------------------------------------------------------------------------+\n";
+
+    // unused-vars
+    // 1. utilization
+    // 2. memory_usage
+    // 3. total_memory
 }
 
 void GraphicsUtil::displayProcesses() const 
 {
-    setCursorPosition(0, 12); // Move below the GPU summary
-    std::cout << "+-------+-------+----------------------+-----------------+" << std::endl;
-    std::cout << "| PID   | Type  | Process Name          | GPU Memory Usage|" << std::endl;
-    std::cout << "+-------+-------+----------------------+-----------------+" << std::endl;
+    setCursorPosition(0, 13); // Move below the GPU summary
+    std::cout << "+-------+-------+------------------------------------------+------------------+" << std::endl;
+    std::cout << "| PID   | Type  | Process Name                             | GPU Memory Usage |" << std::endl;
+    std::cout << "+-------+-------+------------------------------------------+------------------+" << std::endl;
 
     for (const auto& process : processes) {
         process.display();
     }
 
-    std::cout << "+-------+-------+----------------------+-----------------+" << std::endl;
+    std::cout << "+-------+-------+------------------------------------------+------------------+" << std::endl;
 }
