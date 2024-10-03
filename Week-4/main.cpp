@@ -40,11 +40,11 @@ void white(){
 
 void asciiart(){
     cout << "  _____  _____  ____  _____  ______  _______     __ \n";
-    cout << " / ____|/ ____|/ __  |  __  |  ____|/ ____      / / \n";
-    cout << "| |    | (___ | |  | | |__) | |__  | (___     _/ /  \n";
-    cout << "| |      ___  | |  | |  ___/|  __|   ___        /   \n";
+    cout << " / ____|/ ____|/ __ \\|  __ \\|  ____|/ ____\\ \\   / / \n";
+    cout << "| |    | (___ | |  | | |__) | |__  | (___  \\ \\_/ /  \n";
+    cout << "| |     \\___ \\| |  | |  ___/|  __|  \\___ \\  \\   /   \n";
     cout << "| |____ ____) | |__| | |    | |____ ____) |  | |    \n";
-    cout << "  _____|_____/  ____/|_|    |______|_____/   |_|    \n";
+    cout << " \\_____|_____/ \\____/|_|    |______|_____/   |_|    \n";
 }
 void header(){
     green();
@@ -118,21 +118,24 @@ int main() {
             clear();
         } else if(response == "nvidia-smi")
         {
-            system("cls");  
+            //system("cls");  
 
-            showTimestamp();
+            // showTimestamp();
 
-            GraphicsUtil GraphicsUtil("NVIDIA RTX 4090 Laptop GPU", "999.99", 65, 6144, 8192);
+            GraphicsUtil graphicsUtil("NVIDIA RTX 4090 Laptop GPU", "999.99", 65, 6144, 8192);
             
-            GraphicsUtil.displaySummary();
+            // graphicsUtil.displaySummary();
             
-            GraphicsUtil.addProcess(Process(01, "G", "reallylongprocess/name/test/123/456/valorant.exe", 256));
-            GraphicsUtil.addProcess(Process(02, "G", "another/really/long/process/name/vscode.exe", 128));
-            GraphicsUtil.addProcess(Process(03, "C", "NASM.exe", 512));
-            GraphicsUtil.addProcess(Process(04, "C", "aiosehntoiase/asoiehcnas/aoisehcnaoencaur/rubyonrails.exe", 1024));
-            GraphicsUtil.addProcess(Process(05, "C", "afterburner.exe", 2048));
+            // graphicsUtil.addProcess(Process(01, "G", "reallylongprocess/name/test/123/456/valorant.exe", 256));
+            // graphicsUtil.addProcess(Process(02, "G", "another/really/long/process/name/vscode.exe", 128));
+            // graphicsUtil.addProcess(Process(03, "C", "NASM.exe", 512));
+            // graphicsUtil.addProcess(Process(04, "C", "aiosehntoiase/asoiehcnas/aoisehcnaoencaur/rubyonrails.exe", 1024));
+            // graphicsUtil.addProcess(Process(05, "C", "afterburner.exe", 2048));
 
-            GraphicsUtil.displayProcesses();
+            // graphicsUtil.displayProcesses();
+
+            graphicsUtil.executeNvidiaSmi();
+            
         }
     }
     
