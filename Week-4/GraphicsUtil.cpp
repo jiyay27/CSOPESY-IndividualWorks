@@ -13,6 +13,12 @@ void GraphicsUtil::setCursorPosition(int x, int y) const
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }
 
+void GraphicsUtil::setConsoleTextColor(WORD color) const 
+{
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(hConsole, color);
+}
+
 void GraphicsUtil::addProcess(const Process& process) 
 {
     processes.push_back(process);
@@ -21,7 +27,7 @@ void GraphicsUtil::addProcess(const Process& process)
 void GraphicsUtil::displaySummary() const 
 {
     String truncatedGpu = Utility::truncateRightLine(name, 20);
-
+    setConsoleTextColor(FOREGROUND_RED);
     setCursorPosition(0, 1);
     std::cout << "+-----------------------------------------------------------------------------+\n";
     std::cout << "| NVIDIA-SMI 528.49" << std::setw(25) << "Driver Version: " << driver_version << std::setw(23) << "CUDA Version: 12.0" << std::setw(6) << "|" <<std::endl;
@@ -53,9 +59,4 @@ void GraphicsUtil::displayProcesses() const
     }
 
     std::cout << "+-------+-------+------------------------------------------+------------------+" << std::endl;
-}
-
-
-void GraphicsUtil::executeNvidiaSmi() const {
-    
 }

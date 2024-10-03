@@ -118,23 +118,21 @@ int main() {
             clear();
         } else if(response == "nvidia-smi")
         {
-            //system("cls");  
+            system("cls");  
 
-            // showTimestamp();
+            showTimestamp();
 
             GraphicsUtil graphicsUtil("NVIDIA RTX 4090 Laptop GPU", "999.99", 65, 6144, 8192);
             
-            // graphicsUtil.displaySummary();
+            graphicsUtil.displaySummary();
             
-            // graphicsUtil.addProcess(Process(01, "G", "reallylongprocess/name/test/123/456/valorant.exe", 256));
-            // graphicsUtil.addProcess(Process(02, "G", "another/really/long/process/name/vscode.exe", 128));
-            // graphicsUtil.addProcess(Process(03, "C", "NASM.exe", 512));
-            // graphicsUtil.addProcess(Process(04, "C", "aiosehntoiase/asoiehcnas/aoisehcnaoencaur/rubyonrails.exe", 1024));
-            // graphicsUtil.addProcess(Process(05, "C", "afterburner.exe", 2048));
+            graphicsUtil.addProcess(Process(01, "G", "reallylongprocess/name/test/123/456/valorant.exe", 256));
+            graphicsUtil.addProcess(Process(02, "G", "another/really/long/process/name/vscode.exe", 128));
+            graphicsUtil.addProcess(Process(03, "C", "NASM.exe", 512));
+            graphicsUtil.addProcess(Process(04, "C", "aiosehntoiase/asoiehcnas/aoisehcnaoencaur/rubyonrails.exe", 1024));
+            graphicsUtil.addProcess(Process(05, "C", "afterburner.exe", 2048));
 
-            // graphicsUtil.displayProcesses();
-
-            graphicsUtil.executeNvidiaSmi();
+            graphicsUtil.displayProcesses();
             
         }
     }
