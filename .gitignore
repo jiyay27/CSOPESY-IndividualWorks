@@ -16,5 +16,8 @@ output/
 
 run.exe
 
+test.cpp
+test.exe
+
 # Built Visual Studio Code Extensions
 *.vsix
