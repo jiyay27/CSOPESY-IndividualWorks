@@ -74,7 +74,7 @@ int main() {
         {
             while(true) {
                 pollKeyboard();
-                usleep(3000);
+                usleep(10);
                 drawScreen();
             }
         }
