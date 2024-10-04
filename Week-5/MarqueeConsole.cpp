@@ -1,12 +1,11 @@
-#include <conio.h>
-#include <bits/stdc++.h>
-#include <unistd.h>
+#include "MarqueeConsole.h"
 
 std::string currCommand;
 std::vector<std::string> commands;
+
 int x = 0;
 int y = 0;
-int sizeX = 100;
+int sizeX = 80;
 int sizeY = 15;
 int yCount = 1;
 int xCount = 1;
@@ -66,14 +65,6 @@ void drawScreen() {
     std::reverse(commands.begin(), commands.end());
 }
 
-int main() {
-    while(true) {
-        pollKeyboard();
-        usleep(3000);
-        drawScreen();
-    }
-    return 0;
-}
 
 
 

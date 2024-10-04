@@ -1,11 +1,10 @@
 #include <iostream>
 #include <string>
-#include "MarqueeConsole.cpp"
+#include "MarqueeConsole.h"
 
 typedef std::string String;
 using std::cout;
 using std::cin;
-
 
 void black(){
     cout << "\033[0;30m";
@@ -55,7 +54,30 @@ void clear(){
 
 int main() {
 
-    while(true)
+    asciiart();
+    header();
+    String response = "";
 
+    bool running = true;
+    while(running)
+    {
+        cout << "Enter a command: ";
+        cin >> response;
+
+        if(response == "exit")
+        {
+            return 0;
+        } else if(response == "clear")
+        {
+            clear();
+        } else if(response == "marquee")
+        {
+            while(true) {
+                pollKeyboard();
+                usleep(3000);
+                drawScreen();
+            }
+        }
+    }
     return 0;
 }
