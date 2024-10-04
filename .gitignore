@@ -11,6 +11,7 @@
 output/
 
 .vs/
+.vscode/
 
 .exe
 
