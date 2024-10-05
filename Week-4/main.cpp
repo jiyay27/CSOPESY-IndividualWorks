@@ -55,6 +55,7 @@ void header(){
 }
 void clear(){
     system("cls");
+    asciiart();
     header();
 }
 
